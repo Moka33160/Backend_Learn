@@ -1,11 +1,13 @@
-import express from "express";
+// app.js
+import express from 'express';
+import { PORT, NODE_ENV } from './config/env.js'; // Chemin à adapter
+
 const app = express();
 
-app.get("/", (req, res) => {
-  res.send("bienvenu su mon serveur");
+app.get('/', (req, res) => {
+  res.send(`Bienvenue sur le serveur en mode ${NODE_ENV}`);
 });
 
-app.listen(5500, () => {
-  console.log("mon serveur tourne sur le por :  http://localhost:5500");
+app.listen(PORT, () => {
+  console.log(`Serveur démarré sur http://localhost:${PORT} [${NODE_ENV}]`);
 });
-export default app;
