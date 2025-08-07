@@ -5,13 +5,14 @@ import auth from "./routes/auth.route.js";
 import subRoute from "./routes/subs.route.js";
 import userRoute from "./routes/user.route.js";
 import connect from "./database/mongodb.js";
+import errorMidelware from "./middleware/errorHandler.js";
 
 const app = express();
 
 app.use("/app/v1/auth", auth);
 app.use("/app/v1/subs", subRoute);
 app.use("/app/v1/users", userRoute);
-
+app.use(errorMidelware);
 app.get("/", (req, res) => {
   res.send(`Bienvenue sur le serveur en mode ${NODE_ENV}`);
 });
